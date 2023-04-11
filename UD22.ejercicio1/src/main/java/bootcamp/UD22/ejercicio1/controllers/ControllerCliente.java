@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 
 import bootcamp.UD22.ejercicio1.models.Cliente;
 import bootcamp.UD22.ejercicio1.models.Consultas;
-import bootcamp.UD22.ejercicio1.models.Validacion;
 import bootcamp.UD22.ejercicio1.views.ClienteView;
 
 /**
@@ -22,7 +21,6 @@ public class ControllerCliente implements ActionListener {
 	private Cliente cliente;
 	private Consultas consulta;
 	private ClienteView view;
-	private Validacion validar;
 
 	public ControllerCliente(Cliente cliente, Consultas consulta, ClienteView view) {
 		this.cliente = cliente;
@@ -43,8 +41,6 @@ public class ControllerCliente implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == view.btnAdd) {
-			if (!"".equals(view.textDni.getText())) {
-				try {
 					cliente.setNombre(view.textNombre.getText());
 					cliente.setApellido(view.textApellido.getText());
 					cliente.setDireccion(view.textAdress.getText());
@@ -57,20 +53,12 @@ public class ControllerCliente implements ActionListener {
 						JOptionPane.showMessageDialog(null, "Error al Guardar");
 						limpiar();
 					}
-				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(view, "Introduzca un formato válido");
-				} catch (InputMismatchException ex) {
-					JOptionPane.showMessageDialog(view, "Introduzca un formato válido");
-				}
 
-			} else {
-				JOptionPane.showMessageDialog(view, "Debes introducir todos los registros");
-			}
+			
 
 		}
 		if (e.getSource() == view.btnUpdate) {
-			if (!"".equals(view.textDni.getText())) {
-				try {
+			
 					cliente.setId(Integer.parseInt(view.textId.getText()));
 					cliente.setNombre(view.textNombre.getText());
 					cliente.setApellido(view.textApellido.getText());
@@ -85,12 +73,8 @@ public class ControllerCliente implements ActionListener {
 						JOptionPane.showMessageDialog(null, "Error al Modificar");
 						limpiar();
 					}
-				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(view, "Introduzca un formato válido");
-				} catch (InputMismatchException ex) {
-					JOptionPane.showMessageDialog(view, "Introduzca un formato válido");
-				}
-			}
+				
+			
 		}
 		if (e.getSource() == view.btnDelete) {
 			cliente.setId(Integer.parseInt(view.textId.getText()));

@@ -18,11 +18,14 @@ import javax.swing.JOptionPane;
 public class Consultas extends Conexion {
 	private Connection con;
 	private String table = "Cliente";
-	private Validacion validar;
+	
 
 	public boolean registro(Cliente cliente) {
 		con = getConexion();
 		PreparedStatement ps = null;
+		//Realizamos la validación de los datos
+		validarCliente(cliente);
+		
 		String sql = "INSERT INTO Cliente (nombre, apellido, direccion, dni, fecha) VALUES(?,?,?,?,?)";
 		try {
 			ps = con.prepareStatement(sql);
@@ -42,9 +45,26 @@ public class Consultas extends Conexion {
 		}
 	}
 
+	private void validarCliente(Cliente cliente) {
+		// TODO Auto-generated method stub
+		if(cliente.getApellido().isBlank()) {
+			throw new RuntimeException("El apellido es obligatorio");
+		}else if(cliente.getNombre().isBlank()) {
+			throw new RuntimeException("El nombre es obligatorio");
+		}else if(cliente.getDireccion().isBlank()) {
+			throw new RuntimeException("La dirección es obligatorio");
+		}else if(cliente.getDni()>8 && cliente.getDni()<=11) {
+			throw new RuntimeException("El número debe tener entre 8 y 11 caracteres");
+		}else if(cliente.getFecha().isBlank()) {
+			throw new RuntimeException("La fecha es obligatoria");
+		}
+		
+	}
+
 	public boolean modificar(Cliente cliente) {
 		con = getConexion();
 		PreparedStatement ps = null;
+		validarCliente(cliente);
 		String sql = "UPDATE " + table + " SET nombre=?, apellido=?, direccion=?, dni=?, fecha=? WHERE id=?";
 		try {
 			ps = con.prepareStatement(sql);
