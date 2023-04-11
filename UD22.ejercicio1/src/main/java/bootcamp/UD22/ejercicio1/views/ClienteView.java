@@ -35,12 +35,13 @@ public class ClienteView extends JFrame {
 	public JButton btnClean;
 	public JTextField textDate;
 	public JLabel lblDate;
+	public JTextField textId;
 
 	/**
 	 * Create the frame.
 	 */
 	public ClienteView() {
-		setTitle("Gestión Clientes");
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 523, 351);
 		contentPane = new JPanel();
@@ -123,5 +124,10 @@ public class ClienteView extends JFrame {
 		textDate.setColumns(10);
 		textDate.setBounds(154, 208, 192, 21);
 		contentPane.add(textDate);
+		
+		textId = new JTextField();
+		textId.setBounds(393, 96, 86, 20);
+		contentPane.add(textId);
+		textId.setColumns(10);
 	}
 }

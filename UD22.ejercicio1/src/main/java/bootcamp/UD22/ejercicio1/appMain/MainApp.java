@@ -3,8 +3,9 @@
  */
 package bootcamp.UD22.ejercicio1.appMain;
 
-import java.awt.EventQueue;
-
+import bootcamp.UD22.ejercicio1.controllers.ControllerCliente;
+import bootcamp.UD22.ejercicio1.models.Cliente;
+import bootcamp.UD22.ejercicio1.models.Consultas;
 import bootcamp.UD22.ejercicio1.views.ClienteView;
 
 /**
@@ -14,15 +15,11 @@ import bootcamp.UD22.ejercicio1.views.ClienteView;
 public class MainApp {
 
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ClienteView frame = new ClienteView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+		Cliente cliente = new Cliente();
+		Consultas consulta = new Consultas();
+		ClienteView view = new ClienteView();
+		ControllerCliente ctrl = new ControllerCliente(cliente, consulta, view);
+		ctrl.iniciar();
+		view.setVisible(true);
+		}
 }
