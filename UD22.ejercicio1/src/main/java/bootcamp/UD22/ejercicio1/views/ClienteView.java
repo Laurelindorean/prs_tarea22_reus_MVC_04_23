@@ -33,6 +33,8 @@ public class ClienteView extends JFrame {
 	public JButton btnUpdate;
 	public JButton btnDelete;
 	public JButton btnClean;
+	public JTextField textDate;
+	public JLabel lblDate;
 
 	/**
 	 * Create the frame.
@@ -50,45 +52,45 @@ public class ClienteView extends JFrame {
 		lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNombre.setBounds(38, 51, 70, 21);
+		lblNombre.setBounds(38, 39, 70, 21);
 		contentPane.add(lblNombre);
 		
 		lblApellido = new JLabel("Apellido");
 		lblApellido.setHorizontalAlignment(SwingConstants.CENTER);
 		lblApellido.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblApellido.setBounds(38, 93, 70, 21);
+		lblApellido.setBounds(38, 81, 70, 21);
 		contentPane.add(lblApellido);
 		
 		lblDireccin = new JLabel("Dirección");
 		lblDireccin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDireccin.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblDireccin.setBounds(38, 136, 70, 21);
+		lblDireccin.setBounds(38, 124, 70, 21);
 		contentPane.add(lblDireccin);
 		
 		lblDni = new JLabel("DNI");
 		lblDni.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDni.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblDni.setBounds(38, 178, 70, 21);
+		lblDni.setBounds(38, 163, 70, 21);
 		contentPane.add(lblDni);
 		
 		textNombre = new JTextField();
-		textNombre.setBounds(154, 52, 192, 21);
+		textNombre.setBounds(154, 40, 192, 21);
 		contentPane.add(textNombre);
 		textNombre.setColumns(10);
 		
 		textApellido = new JTextField();
 		textApellido.setColumns(10);
-		textApellido.setBounds(154, 94, 192, 21);
+		textApellido.setBounds(154, 82, 192, 21);
 		contentPane.add(textApellido);
 		
 		textAdress = new JTextField();
 		textAdress.setColumns(10);
-		textAdress.setBounds(154, 137, 192, 21);
+		textAdress.setBounds(154, 125, 192, 21);
 		contentPane.add(textAdress);
 		
 		textDni = new JTextField();
 		textDni.setColumns(10);
-		textDni.setBounds(154, 179, 192, 21);
+		textDni.setBounds(154, 164, 192, 21);
 		contentPane.add(textDni);
 		
 		btnAdd = new JButton("Añadir");
@@ -108,7 +110,18 @@ public class ClienteView extends JFrame {
 		contentPane.add(btnClean);
 		
 		btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(390, 51, 89, 23);
+		btnBuscar.setBounds(390, 39, 89, 23);
 		contentPane.add(btnBuscar);
+		
+		lblDate = new JLabel("Fecha");
+		lblDate.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblDate.setBounds(38, 207, 70, 21);
+		contentPane.add(lblDate);
+		
+		textDate = new JTextField();
+		textDate.setColumns(10);
+		textDate.setBounds(154, 208, 192, 21);
+		contentPane.add(textDate);
 	}
 }

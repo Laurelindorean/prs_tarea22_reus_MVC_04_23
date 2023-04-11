@@ -16,27 +16,35 @@ public class Conexion {
 	private final String URL = "jdbc:mysql://192.168.1.63:3306?useTimezone=true&serverTimezone=UTC";
 	private final String USER = "remote";
 	private final String PSW = "Palmira-85";
+	private final String BD = "UD22_Ejercicio1";
 	private Connection con;
 	
 	public Conexion() {
 		try {
 			Class.forName(DRIVER);
 			con = DriverManager.getConnection(URL, USER, PSW);
+			Statement st = con.createStatement();
+			st.executeQuery("USE " + BD + ";");
+			if(con!=null) {
+				System.out.println("Conexión establecida");
+			}
 		} catch (ClassNotFoundException e) {			
 			e.printStackTrace();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public int actualizar(String consulta) {
-		
+	public Connection getConexion() {
+		return con;
+	}
+	public void desconectar() {
 		try {
-			Statement st = con.createStatement();
-			return st.executeUpdate(consulta);
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return 0;
 	}
+	
+	
+
 }
