@@ -5,18 +5,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.border.EtchedBorder;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JTextPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
-import java.awt.BorderLayout;
 import javax.swing.border.TitledBorder;
-import java.awt.Color;
 import java.awt.Dimension;
 
 public class ClienteView extends JFrame {

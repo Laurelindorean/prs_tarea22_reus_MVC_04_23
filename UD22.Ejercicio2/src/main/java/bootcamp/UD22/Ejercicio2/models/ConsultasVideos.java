@@ -26,7 +26,7 @@ public class ConsultasVideos {
 	private ResultSet rs;
 
 	
-	public List listar() {
+	public List<Videos> listar() {
 		List<Videos> datos = new ArrayList<>();
 		String sql = "SELECT * FROM " + table;
 		con = conexion.getConexion();

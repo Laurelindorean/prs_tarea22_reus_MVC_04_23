@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import bootcamp.UD22.Ejercicio2.models.Cliente;
+
 import bootcamp.UD22.Ejercicio2.models.ConsultasVideos;
 import bootcamp.UD22.Ejercicio2.models.Videos;
 import bootcamp.UD22.Ejercicio2.views.PrincipalView;

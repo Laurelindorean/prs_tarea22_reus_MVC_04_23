@@ -12,7 +12,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import bootcamp.UD22.Ejercicio2.views.ClienteView;
 
 
 /**
@@ -25,7 +24,7 @@ public class ConsultasCliente{
 	private String table = "Cliente";
 	private PreparedStatement ps;
 	private ResultSet rs;
-	private ClienteView view;
+	
 
 	public List<Cliente> listar() {
 		List<Cliente> datos = new ArrayList<>();
