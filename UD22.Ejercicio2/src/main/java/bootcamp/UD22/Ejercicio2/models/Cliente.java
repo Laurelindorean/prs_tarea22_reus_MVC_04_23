@@ -65,4 +65,10 @@ public class Cliente {
 		this.fecha = fecha;
 	}
 
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion
+				+ ", dni=" + dni + ", fecha=" + fecha + "]";
+	}
+
 }

@@ -14,24 +14,27 @@ import javax.swing.table.DefaultTableModel;
 import bootcamp.UD22.Ejercicio2.models.Cliente;
 import bootcamp.UD22.Ejercicio2.models.ConsultasCliente;
 import bootcamp.UD22.Ejercicio2.views.ClienteView;
+import bootcamp.UD22.Ejercicio2.views.PrincipalView;
 
 /**
  * @author Palmira
  *
  */
 public class ControllerCliente implements ActionListener {
-	Cliente cliente = new Cliente();
-	ConsultasCliente consulta = new ConsultasCliente();
-	ClienteView view = new ClienteView();
-	DefaultTableModel modelo = new DefaultTableModel();
+	private Cliente cliente = new Cliente();
+	private ConsultasCliente consulta = new ConsultasCliente();
+	private ClienteView view = new ClienteView();
+	private DefaultTableModel modelo = new DefaultTableModel();
 
 	public ControllerCliente(ClienteView view) {
 		this.view = view;
+		view.setVisible(true);
 		this.view.btnList.addActionListener(this);
 		this.view.btnAdd.addActionListener(this);
 		this.view.btnEdit.addActionListener(this);
 		this.view.btnOk.addActionListener(this);
 		this.view.btnDelete.addActionListener(this);
+		this.view.btnVolver.addActionListener(this);
 	}
 
 	@Override
@@ -81,6 +84,12 @@ public class ControllerCliente implements ActionListener {
 				limpiarTabla();
 				listar(view.tabla);
 			}
+		}
+		if(e.getSource()==view.btnVolver) {
+			PrincipalView vistaMenu = new PrincipalView();
+			ControllerMenu ctrlMenu = new ControllerMenu(vistaMenu);
+			view.setVisible(false);
+			vistaMenu.setVisible(true);
 		}
 
 	}

@@ -10,13 +10,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import bootcamp.UD22.Ejercicio2.views.ClienteView;
+
 
 /**
  * @author Palmira
  *
  */
-public class ConsultasCliente extends Conexion {
+public class ConsultasCliente{
 	private Conexion conexion = new Conexion();
 	private Connection con;
 	private String table = "Cliente";
@@ -24,11 +27,12 @@ public class ConsultasCliente extends Conexion {
 	private ResultSet rs;
 	private ClienteView view;
 
-	public List listar() {
+	public List<Cliente> listar() {
 		List<Cliente> datos = new ArrayList<>();
 		String sql = "SELECT * FROM " + table;
 		con = conexion.getConexion();
-
+		
+		
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -52,7 +56,9 @@ public class ConsultasCliente extends Conexion {
 	}
 
 	public boolean agregar(Cliente cliente) {
+		validar(cliente);
 		String sql = "INSERT INTO " + table + " (nombre, apellido, direccion, dni, fecha) VALUES (?,?,?,?,?)";
+		
 		try {
 			con = conexion.getConexion();
 			ps = con.prepareStatement(sql);
@@ -72,6 +78,7 @@ public class ConsultasCliente extends Conexion {
 	
 	public boolean actualizar(Cliente cliente) {
 		String sql = "UPDATE " + table + " SET nombre=?, apellido=?, direccion=?, dni=?, fecha=? WHERE id=?";
+		validar(cliente);
 		try {
 			con=conexion.getConexion();
 			ps = con.prepareStatement(sql);
@@ -100,5 +107,25 @@ public class ConsultasCliente extends Conexion {
 		}catch(Exception e) {
 			
 		}
+	}
+	
+	private void validar(Cliente cliente) {
+		if(cliente.getApellido().isBlank()) {
+			JOptionPane.showMessageDialog(null, "El campo apellido es obligatorio");
+			throw new RuntimeException("El apellido es obligatorio");
+		}else if(cliente.getNombre().isBlank()) {
+			JOptionPane.showMessageDialog(null, "El campo nombre es obligatorio");
+			throw new RuntimeException("El nombre es obligatorio");
+		}else if(cliente.getDireccion().isBlank()) {
+			JOptionPane.showMessageDialog(null, "El campo dirección es obligatorio");
+			throw new RuntimeException("La dirección es obligatorio");
+		}else if(cliente.getDni()>8 && cliente.getDni()<=11) {
+			JOptionPane.showMessageDialog(null, "El número debe tener entre 8 y 11 caracteres");
+			throw new RuntimeException("El número debe tener entre 8 y 11 caracteres");
+		}else if(cliente.getFecha().isBlank()) {
+			JOptionPane.showMessageDialog(null, "La fecha es obligatoria");
+			throw new RuntimeException("La fecha es obligatoria");
+		}
+		
 	}
 }
