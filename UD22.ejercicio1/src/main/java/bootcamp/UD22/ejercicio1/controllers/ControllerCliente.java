@@ -5,8 +5,6 @@ package bootcamp.UD22.ejercicio1.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.InputMismatchException;
-
 import javax.swing.JOptionPane;
 
 import bootcamp.UD22.ejercicio1.models.Cliente;

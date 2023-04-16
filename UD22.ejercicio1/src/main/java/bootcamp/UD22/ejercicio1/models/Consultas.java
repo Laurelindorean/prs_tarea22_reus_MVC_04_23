@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.InputMismatchException;
 
 import javax.swing.JOptionPane;
 
@@ -18,11 +17,11 @@ import javax.swing.JOptionPane;
 public class Consultas extends Conexion {
 	private Connection con;
 	private String table = "Cliente";
-	
+	private PreparedStatement ps;
 
 	public boolean registro(Cliente cliente) {
 		con = getConexion();
-		PreparedStatement ps = null;
+		ps = null;
 		//Realizamos la validación de los datos
 		validarCliente(cliente);
 		
@@ -46,7 +45,6 @@ public class Consultas extends Conexion {
 	}
 
 	private void validarCliente(Cliente cliente) {
-		// TODO Auto-generated method stub
 		if(cliente.getApellido().isBlank()) {
 			throw new RuntimeException("El apellido es obligatorio");
 		}else if(cliente.getNombre().isBlank()) {
@@ -63,7 +61,7 @@ public class Consultas extends Conexion {
 
 	public boolean modificar(Cliente cliente) {
 		con = getConexion();
-		PreparedStatement ps = null;
+		ps = null;
 		validarCliente(cliente);
 		String sql = "UPDATE " + table + " SET nombre=?, apellido=?, direccion=?, dni=?, fecha=? WHERE id=?";
 		try {
@@ -105,7 +103,7 @@ public class Consultas extends Conexion {
 
 	public boolean buscar(Cliente cliente) {
 		con = getConexion();
-		PreparedStatement ps = null;
+		ps = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM " + table + " WHERE nombre=?";
 
@@ -124,6 +122,7 @@ public class Consultas extends Conexion {
 			} else {
 				JOptionPane.showMessageDialog(null, "El registro no existe");
 			}
+			rs.close();
 			return true;
 		} catch (SQLException e) {
 
