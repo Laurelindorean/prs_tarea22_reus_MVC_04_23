@@ -10,7 +10,7 @@ package bootcamp.UD22.Ejercicio3.models;
 public class Asignado {
 
 	private String cientifico;
-	private char proyecto;
+	private String proyecto;
 	
 	//SETTERS Y GETTERS
 	public String getCientifico() {
@@ -19,10 +19,10 @@ public class Asignado {
 	public void setCientifico(String cientifico) {
 		this.cientifico = cientifico;
 	}
-	public char getProyecto() {
+	public String getProyecto() {
 		return proyecto;
 	}
-	public void setProyecto(char proyecto) {
+	public void setProyecto(String proyecto) {
 		this.proyecto = proyecto;
 	}
 	

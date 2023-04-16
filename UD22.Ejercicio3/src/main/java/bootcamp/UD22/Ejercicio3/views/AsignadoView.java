@@ -1,6 +1,7 @@
 package bootcamp.UD22.Ejercicio3.views;
 
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -14,12 +15,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
-public class CientificosView extends JFrame {
+public class AsignadoView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	public JPanel contentPane;
 	public JTextField textDni;
-	public JTextField textNomA;
+	public JTextField textProyecto;
 	public JButton btnAdd;
 	public JButton btnList;
 	public JButton btnEdit;
@@ -29,8 +30,8 @@ public class CientificosView extends JFrame {
 	public JButton btnOk;
 	public JButton btnVolver;
 
-	public CientificosView() {
-		setTitle("Cientificos");
+	public AsignadoView() {
+		setTitle("Asignación");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 540, 520);
 		contentPane = new JPanel();
@@ -45,23 +46,23 @@ public class CientificosView extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JLabel lblDni = new JLabel("DNI:");
-		lblDni.setBounds(10, 38, 57, 20);
+		JLabel lblDni = new JLabel("Dni Cientifico:");
+		lblDni.setBounds(10, 38, 83, 20);
 		panel.add(lblDni);
 
-		JLabel lblNomA = new JLabel("Nombre Comp.:");
-		lblNomA.setBounds(10, 85, 83, 14);
-		panel.add(lblNomA);
+		JLabel lblId = new JLabel("ID Proyecto:");
+		lblId.setBounds(10, 85, 83, 14);
+		panel.add(lblId);
 
 		textDni = new JTextField();
 		textDni.setBounds(94, 38, 223, 20);
 		panel.add(textDni);
 		textDni.setColumns(10);
 
-		textNomA = new JTextField();
-		textNomA.setColumns(10);
-		textNomA.setBounds(94, 82, 223, 20);
-		panel.add(textNomA);
+		textProyecto = new JTextField();
+		textProyecto.setColumns(10);
+		textProyecto.setBounds(94, 82, 223, 20);
+		panel.add(textProyecto);
 
 		btnAdd = new JButton("Agregar");
 		btnAdd.setBounds(350, 11, 121, 29);
@@ -93,7 +94,13 @@ public class CientificosView extends JFrame {
 
 		panelDetalle.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		tabla = new JTable();
-		tabla.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "DNI", "Nombre Completo" }));
+		tabla.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"DNI Cientifico", "ID Proyecto"
+			}
+		));
 		JScrollPane scroll = new JScrollPane(tabla);
 		scroll.setPreferredSize(new Dimension(452, 230));
 		panelDetalle.add(scroll);

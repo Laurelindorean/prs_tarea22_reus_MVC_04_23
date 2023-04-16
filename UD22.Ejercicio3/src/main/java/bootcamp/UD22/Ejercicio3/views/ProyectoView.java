@@ -1,6 +1,7 @@
 package bootcamp.UD22.Ejercicio3.views;
 
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -14,12 +15,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
-public class CientificosView extends JFrame {
+public class ProyectoView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	public JPanel contentPane;
-	public JTextField textDni;
-	public JTextField textNomA;
+	public JTextField textId;
+	public JTextField textNombre;
 	public JButton btnAdd;
 	public JButton btnList;
 	public JButton btnEdit;
@@ -28,9 +29,12 @@ public class CientificosView extends JFrame {
 	public JTable tabla;
 	public JButton btnOk;
 	public JButton btnVolver;
+	private JLabel lblHoras;
+	public JTextField textHoras;
 
-	public CientificosView() {
-		setTitle("Cientificos");
+
+	public ProyectoView() {
+		setTitle("Proyecto");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 540, 520);
 		contentPane = new JPanel();
@@ -45,23 +49,23 @@ public class CientificosView extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JLabel lblDni = new JLabel("DNI:");
-		lblDni.setBounds(10, 38, 57, 20);
-		panel.add(lblDni);
+		JLabel lblId = new JLabel("ID:");
+		lblId.setBounds(10, 38, 57, 20);
+		panel.add(lblId);
 
-		JLabel lblNomA = new JLabel("Nombre Comp.:");
-		lblNomA.setBounds(10, 85, 83, 14);
-		panel.add(lblNomA);
+		JLabel lblNom = new JLabel("Nombre:");
+		lblNom.setBounds(10, 85, 68, 14);
+		panel.add(lblNom);
 
-		textDni = new JTextField();
-		textDni.setBounds(94, 38, 223, 20);
-		panel.add(textDni);
-		textDni.setColumns(10);
+		textId = new JTextField();
+		textId.setBounds(94, 38, 223, 20);
+		panel.add(textId);
+		textId.setColumns(10);
 
-		textNomA = new JTextField();
-		textNomA.setColumns(10);
-		textNomA.setBounds(94, 82, 223, 20);
-		panel.add(textNomA);
+		textNombre = new JTextField();
+		textNombre.setColumns(10);
+		textNombre.setBounds(94, 82, 223, 20);
+		panel.add(textNombre);
 
 		btnAdd = new JButton("Agregar");
 		btnAdd.setBounds(350, 11, 121, 29);
@@ -86,6 +90,15 @@ public class CientificosView extends JFrame {
 		btnVolver = new JButton("Volver");
 		btnVolver.setBounds(350, 145, 121, 29);
 		panel.add(btnVolver);
+		
+		lblHoras = new JLabel("Horas:");
+		lblHoras.setBounds(10, 127, 68, 14);
+		panel.add(lblHoras);
+		
+		textHoras = new JTextField();
+		textHoras.setColumns(10);
+		textHoras.setBounds(94, 124, 223, 20);
+		panel.add(textHoras);
 
 		panelDetalle = new JPanel();
 		panelDetalle.setBorder(new TitledBorder(null, "Detalle", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -93,12 +106,17 @@ public class CientificosView extends JFrame {
 
 		panelDetalle.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		tabla = new JTable();
-		tabla.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "DNI", "Nombre Completo" }));
+		tabla.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"ID", "Nombre", "Horas"
+			}
+		));
 		JScrollPane scroll = new JScrollPane(tabla);
 		scroll.setPreferredSize(new Dimension(452, 230));
 		panelDetalle.add(scroll);
 		getContentPane().add(panelDetalle);
 
 	}
-
 }

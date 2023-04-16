@@ -9,15 +9,15 @@ package bootcamp.UD22.Ejercicio3.models;
  */
 public class Proyecto {
 	
-	private char id;
+	private String id;
 	private String nombre;
 	private int horas;
 	
 	//SETTERS Y GETTERS
-	public char getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(char id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getNombre() {
