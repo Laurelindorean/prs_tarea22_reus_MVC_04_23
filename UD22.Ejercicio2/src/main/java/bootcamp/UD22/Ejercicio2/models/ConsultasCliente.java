@@ -69,4 +69,36 @@ public class ConsultasCliente extends Conexion {
 		}
 		return true;
 	}
+	
+	public boolean actualizar(Cliente cliente) {
+		String sql = "UPDATE " + table + " SET nombre=?, apellido=?, direccion=?, dni=?, fecha=? WHERE id=?";
+		try {
+			con=conexion.getConexion();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, cliente.getNombre());
+			ps.setString(2, cliente.getApellido());
+			ps.setString(3, cliente.getDireccion());
+			ps.setInt(4, cliente.getDni());
+			ps.setString(5, cliente.getFecha());
+			ps.setInt(6, cliente.getId());	
+			ps.executeUpdate();
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}	
+		return true;
+	}
+	
+	public void eliminar(int id) {
+		String sql = "DELETE FROM " + table + " WHERE id=" + id;
+		try {
+			con = conexion.getConexion();
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+		}catch(Exception e) {
+			
+		}
+	}
 }

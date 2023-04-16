@@ -40,6 +40,7 @@ public class ClienteView extends JFrame {
 	public JButton btnDelete;
 	private JPanel panelDetalle;
 	public JTable tabla;
+	public JButton btnOk;
 
 
 
@@ -126,12 +127,16 @@ public class ClienteView extends JFrame {
 		panel.add(btnDelete);
 		
 		btnEdit = new JButton("Editar");
-		btnEdit.setBounds(350, 100, 121, 29);
+		btnEdit.setBounds(345, 100, 68, 29);
 		panel.add(btnEdit);
 		
 		btnList = new JButton("Buscar");
 		btnList.setBounds(350, 55, 121, 29);
 		panel.add(btnList);
+		
+		btnOk = new JButton("OK");
+		btnOk.setBounds(420, 100, 55, 29);
+		panel.add(btnOk);
 		
 		panelDetalle = new JPanel();
 		panelDetalle.setBorder(new TitledBorder(null, "Detalle", TitledBorder.LEADING, TitledBorder.TOP, null, null));
