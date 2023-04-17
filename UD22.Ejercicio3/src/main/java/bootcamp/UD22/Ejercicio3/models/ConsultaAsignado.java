@@ -65,7 +65,7 @@ public class ConsultaAsignado {
 	}
 
 	public boolean actualizar(Asignado asignado) {
-		String sql = "UPDATE " + table + " SET FK_id_cientifico=?, FK_id_proyecto=? WHERE FK_id_cientifico=? OR FK_id_proyecto=?";
+		String sql = "UPDATE " + table + " SET FK_id_cientifico=?, FK_id_proyecto=? WHERE FK_id_cientifico=? AND FK_id_proyecto=?";
 		validar(asignado);
 		try {
 			con = conexion.getConexion();
@@ -83,8 +83,8 @@ public class ConsultaAsignado {
 		return true;
 	}
 
-	public void eliminar(String dni) {
-		String sql = "DELETE FROM " + table + " WHERE FK_id_cientifico='" + dni +"'";
+	public void eliminar(String dni, String id) {
+		String sql = "DELETE FROM " + table + " WHERE FK_id_cientifico='" + dni +"' AND FK_id_proyecto='" + id + "'";
 		try {
 			con = conexion.getConexion();
 			ps = con.prepareStatement(sql);

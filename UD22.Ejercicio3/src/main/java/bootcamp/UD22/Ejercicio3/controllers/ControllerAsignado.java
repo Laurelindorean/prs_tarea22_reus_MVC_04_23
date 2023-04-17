@@ -72,11 +72,9 @@ public class ControllerAsignado implements ActionListener {
 				JOptionPane.showMessageDialog(view, "Debes seleccionar una fila");
 			} else {
 				String dni = (String) view.tabla.getValueAt(fila, 0);
-				consulta.eliminar(dni);
-				JOptionPane.showMessageDialog(view, "Cientifico Eliminado");
 				String id = (String) view.tabla.getValueAt(fila, 1);
-				consulta.eliminar(id);
-				JOptionPane.showMessageDialog(view, "Proyecto Eliminado");
+				consulta.eliminar(dni, id);
+				JOptionPane.showMessageDialog(view, "Cientifico y Proyecto Eliminado");
 				limpiar();
 				limpiarTabla();
 				listar(view.tabla);
