@@ -67,7 +67,7 @@ public class ConsultasProyecto {
 		return true;
 	}
 
-	public boolean actualizar(Proyecto proyecto) {
+	public boolean actualizar(Proyecto proyecto, String id) {
 		String sql = "UPDATE " + table + " SET id=?, nombre=?, horas=? WHERE id=?";
 		validar(proyecto);
 		try {
@@ -76,7 +76,7 @@ public class ConsultasProyecto {
 			ps.setString(1, proyecto.getId());
 			ps.setString(2, proyecto.getNombre());
 			ps.setInt(3, proyecto.getHoras());
-			ps.setString(4, proyecto.getId());
+			ps.setString(4, id);
 			ps.executeUpdate();
 
 		} catch (SQLException e) {

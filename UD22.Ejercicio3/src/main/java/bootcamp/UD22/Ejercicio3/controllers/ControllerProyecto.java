@@ -127,7 +127,9 @@ public class ControllerProyecto implements ActionListener{
 		proyecto.setId(id);
 		proyecto.setNombre(nombre);
 		proyecto.setHoras(horas);
-		boolean actualizado = consulta.actualizar(proyecto);
+		int fila = view.tabla.convertRowIndexToModel(view.tabla.getSelectedRow());
+		String idSelec = (String) modelo.getValueAt(fila, 0);
+		boolean actualizado = consulta.actualizar(proyecto, idSelec);
 		if (actualizado) {
 			JOptionPane.showMessageDialog(view, "Proyecto actualizado");
 		} else {

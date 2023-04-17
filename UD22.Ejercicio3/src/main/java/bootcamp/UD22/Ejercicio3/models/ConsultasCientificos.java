@@ -66,7 +66,7 @@ public class ConsultasCientificos {
 		return true;
 	}
 
-	public boolean actualizar(Cientificos cientifico) {
+	public boolean actualizar(Cientificos cientifico, String id) {
 		String sql = "UPDATE " + table + " SET dni=?, nomApels=? WHERE dni=?";
 		validar(cientifico);
 		try {
@@ -74,7 +74,7 @@ public class ConsultasCientificos {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, cientifico.getDni());
 			ps.setString(2, cientifico.getNomApels());
-			ps.setString(3, cientifico.getDni());
+			ps.setString(3, id);
 			ps.executeUpdate();
 
 		} catch (SQLException e) {

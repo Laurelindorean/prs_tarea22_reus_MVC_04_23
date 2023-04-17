@@ -118,7 +118,9 @@ public class ControllerCientificos implements ActionListener {
 		String nomApels = view.textNomA.getText();
 		cientifico.setDni(dni);
 		cientifico.setNomApels(nomApels);
-		boolean actualizado = consulta.actualizar(cientifico);
+		int fila = view.tabla.convertRowIndexToModel(view.tabla.getSelectedRow());
+		String idSelec = (String) modelo.getValueAt(fila, 0);
+		boolean actualizado = consulta.actualizar(cientifico, idSelec);
 		if (actualizado) {
 			JOptionPane.showMessageDialog(view, "Cientifico actualizado");
 		} else {
