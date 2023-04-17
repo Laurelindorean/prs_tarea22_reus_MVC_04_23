@@ -87,7 +87,7 @@ public class ConsultasProyecto {
 	}
 
 	public void eliminar(String id) {
-		String sql = "DELETE FROM " + table + " WHERE id=" + id;
+		String sql = "DELETE FROM " + table + " WHERE id='" + id + "'";
 		try {
 			con = conexion.getConexion();
 			ps = con.prepareStatement(sql);

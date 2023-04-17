@@ -85,7 +85,7 @@ public class ConsultasCientificos {
 	}
 
 	public void eliminar(String dni) {
-		String sql = "DELETE FROM " + table + " WHERE dni=" + dni;
+		String sql = "DELETE FROM " + table + " WHERE dni='" + dni + "'";
 		try {
 			con = conexion.getConexion();
 			ps = con.prepareStatement(sql);
